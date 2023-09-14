@@ -1,0 +1,6 @@
+1:53 前言
+3:46 以Arduino IDE操作Smart-CAM
+7:47 labelImg標注工具介紹
+11:04 使用Google Colab製作AI模型
+19:53 將模型燒入晶片
+24:35 其他

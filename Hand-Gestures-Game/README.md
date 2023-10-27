@@ -6,10 +6,7 @@
 
 ![image](https://github.com/ideashatch/HUB-8735_examples/assets/127272102/3956d111-bde6-4a36-a6aa-b02c8ba1f76c)
 
-
-![image](https://github.com/ideashatch/HUB-8735-Hand-Gestures-Game/assets/127272102/5fa4298c-01e6-45dd-8906-ad8bf37a4bf3)
-
-![image](https://github.com/ideashatch/HUB-8735-Hand-Gestures-Game/assets/127272102/122ab9ba-7b52-47b5-ad21-571016d7005d)
+![image](https://github.com/ideashatch/HUB-8735_examples/assets/127272102/676fc1e4-cabe-48ab-b1eb-7e003768b71b)
 
 更多內容請參考：https://www.ideas-hatch.com/evb_share_detail.jsp?id=105
 

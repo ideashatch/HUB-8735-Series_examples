@@ -4,6 +4,9 @@
 
 由於手勢有不同的角度及手指的位置變化，加上不同玩家有不同的手勢習慣，因此手勢辨識是相當具有挑戰性的。在製作 AI 資料集時，需要調整各種手勢的誤差，以提高辨識的準確度。
 
+![image](https://github.com/ideashatch/HUB-8735_examples/assets/127272102/3956d111-bde6-4a36-a6aa-b02c8ba1f76c)
+
+
 ![image](https://github.com/ideashatch/HUB-8735-Hand-Gestures-Game/assets/127272102/5fa4298c-01e6-45dd-8906-ad8bf37a4bf3)
 
 ![image](https://github.com/ideashatch/HUB-8735-Hand-Gestures-Game/assets/127272102/122ab9ba-7b52-47b5-ad21-571016d7005d)

@@ -1,3 +1,3 @@
-AI 電子貓眼
-![image](https://github.com/ideashatch/HUB-8735_examples/assets/127272102/8838814b-76ac-4c79-bacc-7f04f85b1189)
+# AI 電子貓眼
 
+更多資訊與簡報：https://www.ideas-hatch.com/evb_share_detail.jsp?id=111

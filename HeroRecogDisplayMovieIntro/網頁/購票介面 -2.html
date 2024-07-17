@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電影院售票</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* 讓內部元素可以使用絕對定位 */
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        img {
+            float: left;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+        .movie-image {
+            width: 200px;
+            height: 300px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #ticketModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .modal-content input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .user-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .user-actions a {
+            margin-left: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>拳頭影城</h1>
+        <div class="user-actions">
+            <a href="登入系統.html">登入</a>
+            <a href="註冊.html">註冊</a>
+        </div>
+        <h2>現正熱映</h2>
+        <ul>
+            <li>
+                <img src="movie3.jpg" alt="美國隊長" class="movie-image">
+                <div>
+                    <h3>美國隊長</h3>
+                    <p>在被認為不適合服兵役後，史蒂夫羅傑斯自願參加一項絕密研究項目，將他變成了美國隊長，一個致力於捍衛美國理想、領導自由之戰的超級英雄，成為了對抗邪惡的終極武器。當一股可怕的力量威脅到全球所有人時，全球最強戰士發動了對抗邪惡的九頭蛇組織的戰爭，該組織由惡貫滿盈的紅骷髏領導。。</p>
+                    <label for="movie1-time">時段：</label>
+                    <select id="movie1-time">
+                    <option value="12:00PM">12:00PM</option>
+                    <option value="3:00PM">3:00PM</option>
+                    </select>
+                    <button onclick="buyTicket('美國隊長')">購買票</button>
+                </div>
+            </li>
+            <li>
+                <img src="movie4.jpg" alt="美國隊長3：英雄內戰" class="movie-image">
+                <div>
+                    <h3>美國隊長3：英雄內戰</h3>
+                    <p>在《美國隊長3：英雄內戰》中，美國隊長史蒂夫羅傑斯帶領著全新組建的復仇者聯盟，繼續維護世界和平。然而，一次執行任務時聯盟成員不慎造成大量平民傷亡，從而激發政治壓力，政府決定使用一套監管系統來管理和領導復仇者聯盟。聯盟內部因此分裂為兩派—一方由史蒂夫羅傑斯領導，他主張維護成員自由，在免受政府干擾的情況下保護世界；另一方則追隨東尼史塔克，他令人意外地決定支持政府的監管和問責體系。
+
+
+簡介
+</p>
+                    <label for="movie2-time">時段：</label>
+                    <select id="movie2-time">
+                    <option value="6:00PM">6:00PM</option>
+                    <option value="9:00PM">9:00PM</option>
+                    </select>
+                     <button onclick="buyTicket('美國隊長3：英雄內戰')">購買票</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 添加模态对话框 -->
+    <div id="ticketModal" style="display: none;">
+        <div class="modal-content">
+            <h2>購買電影票</h2>
+            <p id="selectedMovie"></p>
+            <label for="customerName">姓名：</label>
+            <input type="text" id="customerName">
+            <label for="customerPhone">電話：</label>
+            <input type="text" id="customerPhone">
+	    <label for="ticketQuantity">訂票張數：</label>
+	    <input type="number" id="ticketQuantity" min="1" value="1">
+            <button onclick="confirmPurchase()">確認購買</button>
+            <button onclick="closeModal()">取消</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedMovie = '';
+	let ticketCount = 1; // 預設為一張票
+
+	function buyTicket(movieName) {
+        selectedMovie = movieName;
+    	document.getElementById('selectedMovie').textContent = '您選擇了：' + movieName;
+    	document.getElementById('ticketModal').style.display = 'flex';
+	}
+
+	function confirmPurchase() {
+   	const customerName = document.getElementById('customerName').value;
+    	const customerPhone = document.getElementById('customerPhone').value;
+    	if (customerName.trim() === '' || customerPhone.trim() === '') {
+        alert('請輸入您的姓名和電話。');
+        return;
+    	}
+
+    // 獲取使用者輸入的訂票張數
+    ticketCount = parseInt(document.getElementById('ticketQuantity').value);
+
+    // 获取用户选择的电影的时段
+    let selectedTime;
+    if (selectedMovie === '沙丘2') {
+        selectedTime = document.getElementById('movie1-time').value;
+    } else if (selectedMovie === '排球少年 垃圾場決戰') {
+        selectedTime = document.getElementById('movie2-time').value;
+    }
+
+    // 构建购买信息，包括电影名称、选择的时段和订票张数
+    const purchaseInfo = selectedMovie + '，時段：' + selectedTime + '，訂票張數：' + ticketCount;
+
+    // 在这里可以添加更多的处理逻辑，比如处理付款，发送电子票等等。
+    alert('感謝您購票！您已成功購買：\n' + purchaseInfo);
+    closeModal();
+}
+
+function closeModal() {
+    document.getElementById('ticketModal').style.display = 'none';
+    document.getElementById('customerName').value = ''; // 清空姓名输入框
+    document.getElementById('customerPhone').value = ''; // 清空电话输入框
+    // 重置訂票張數為預設值
+    document.getElementById('ticketQuantity').value = 1;
+    ticketCount = 1;
+}
+    </script>
+</body>
+</html>

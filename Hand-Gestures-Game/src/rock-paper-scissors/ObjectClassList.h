@@ -10,4 +10,4 @@ struct ObjectDetectionItem {
 ObjectDetectionItem itemList[3] = {
 {0,  "Scissors",          1},
 {1,  "Stone",         1},
-{2,  "cloth",             1}};
+{2,  "Paper",             1}};

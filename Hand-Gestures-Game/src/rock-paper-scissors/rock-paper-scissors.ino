@@ -69,8 +69,8 @@ RTSP rtsp;
 StreamIO videoStreamer(1, 1);
 StreamIO videoStreamerNN(1, 1);
 
-char ssid[] = "230329-NB 0757";    // your network SSID (name)
-char pass[] = "1234567890";       // your network password
+char ssid[] = "YOUR_WIFI_SSID";    // your network SSID (name)
+char pass[] = "YOUR_WIFI_PASSWORD";       // your network password
 int status = WL_IDLE_STATUS;
 
 IPAddress ip;
